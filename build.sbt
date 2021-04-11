@@ -1,11 +1,15 @@
-name := """SHORTEN-URL"""
-organization := "com.papagroup"
+name := """shorten-url"""
 
 version := "1.0-SNAPSHOT"
 
-lazy val root = (project in file(".")).enablePlugins(PlayJava)
+lazy val root = (project in file(".")).enablePlugins(PlayScala).settings(
+  watchSources ++= (baseDirectory.value / "public/ui" ** "*").get
+)
 
-scalaVersion := "2.13.3"
+resolvers += Resolver.sonatypeRepo("snapshots")
+
+scalaVersion := "2.12.8"
 
 libraryDependencies += guice
-PlayKeys.devSettings := Seq("play.server.http.port" -> "3000")
+libraryDependencies += "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.2" % Test
+libraryDependencies += "com.h2database" % "h2" % "1.4.199"
