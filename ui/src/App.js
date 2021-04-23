@@ -1,35 +1,17 @@
-import React, {Component} from 'react';
-import {
-  BrowserRouter as Router,
-} from 'react-router-dom';
-
-import Client from "./Client";
 
 import './App.css';
+import React from 'react';
+import {Route,Switch} from 'react-router-dom';
+import Shorten from './components/Shorten.jsx';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {title: ''};
-  }
 
-  async componentDidMount() {
-    Client.getSummary(summary => {
-      this.setState({
-        title: summary.content
-      });
-    });
-  }
-
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <h1>Welcome to {this.state.title}</h1>
-        </div>
-      </Router>
-    );
-  }
+export default function App(){
+  return(
+    <>
+       <Switch>
+         <Route path="" component={Shorten} exact />
+       </Switch> 
+    </>
+  );
 }
-
-export default App;
+ 
