@@ -11,8 +11,7 @@ import play.mvc.Result;
 import play.mvc.Http;
 import play.Logger;
 import static play.Logger.of;
-// import play.data.FormFactory;
-// import play.data.Form;
+
 
 import javax.inject.Singleton;
 import javax.inject.Inject;
@@ -24,17 +23,18 @@ import java.util.Random;
 public class UrlController extends Controller {
 	private static final Logger.ALogger logger = of(UrlController.class);
 
-	// @Inject
-	// FormFactory formFactory;
-
-    private HashMap<String, String> keyMap; // key-url map
-    private HashMap<String, String> valueMap; // url-key map to quickly check
+	// key-url map
+    private HashMap<String, String> keyMap; 
+	// url-key map to quickly check
+    private HashMap<String, String> valueMap; 
 											
-    // already entered in our system
+    // name domain
     private String domain; 
-						
+	// array of characters
     private char myChars[]; 
-    private Random myRand; 
+    // random character
+    private Random myRand;
+	// number characters 
     private int keyLength; 
 
     // Default Constructor
@@ -45,21 +45,18 @@ public class UrlController extends Controller {
 	keyLength = 8;
 	myChars = new char[62];
 	for (int i = 0; i < 62; i++) {
-		int j = 0;
 		if (i < 10) {
-			j = i + 48;
+			myChars[i] = (char)(i + 48);
 		} else if (i > 9 && i <= 35) {
-			j = i + 55;
-		} else {
-			j = i + 61;
+			myChars[i] = (char)(i + 55);	
+		} else {	
+			myChars[i] = (char)(i + 61);
 		}
-		myChars[i] = (char) j;
 	}
 	domain = "http://fkt.in";
     }
 
-    // Constructor which enables you to define tiny URL key length and base URL
-    // name
+    // Constructor which enables define URL key length and base URL
     UrlController(int length, String newDomain) {
 	this();
 	this.keyLength = length;
@@ -98,12 +95,14 @@ public class UrlController extends Controller {
 	return true;
     }
 
+    // sanitizeURL 
     String sanitizeURL(String url) {
 	if (url.charAt(url.length() - 1) == '/')
 	url = url.substring(0, url.length() - 1);
 	return url;
     }
 
+    // get key , save key into keyMap and valueMap
     private String getKey(String longURL) {
 	String key;
 	key = generateKey();
@@ -111,6 +110,9 @@ public class UrlController extends Controller {
 	valueMap.put(longURL, key);
 	return key;
     }
+	
+
+	// create key
     private String generateKey() {
 	String key = "";
 	boolean flag = true;
@@ -119,7 +121,6 @@ public class UrlController extends Controller {
 		for (int i = 0; i <= keyLength; i++) {
 			key += myChars[myRand.nextInt(62)];
 		}
-		// System.out.println("Iteration: "+ counter + "Key: "+ key);
 		if (!keyMap.containsKey(key)) {
 			flag = false;
 		}
@@ -127,11 +128,6 @@ public class UrlController extends Controller {
 	return key;
     }
 	public Result shorten(Http.Request request, String long_url){
-	//	Form<Link> formInput = this.formFactory.form(Link.class).bindFromRequest(request);
-	//	Link query = formInput.get();
-       // query.getLong_url.class;
-		
-       //logger.debug(query.getLong_url());
 		UrlController u = new  UrlController(10, "https://papa/");
 	    DaoUrl daoUrl = DaoUrl.getInstance();
 		daoUrl.createUrl(long_url,u.shortenURL(long_url));

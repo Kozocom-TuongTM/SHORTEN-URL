@@ -1,5 +1,3 @@
-// import serverHost from './services/serverHost'
-
 function getSummary(cb) {
   return fetch('/api/summary', {
     accept: "application/json"
@@ -17,7 +15,6 @@ function shorten(long_url) {
 
     accept: "application/json"
     })
-      //.field('long_url',long_url)
       .then(checkStatus)
       .then(parseJSON);
   }else

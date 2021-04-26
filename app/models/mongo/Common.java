@@ -55,7 +55,6 @@ public class Common {
 
     @PrePersist
     private void prePersist() {
-       // this.prePersistLocal();
         if (this.created == null) {
             this.created = LocalDateTime.now();
         }
