@@ -12,7 +12,6 @@ import play.mvc.Http;
 import play.Logger;
 import static play.Logger.of;
 
-
 import javax.inject.Singleton;
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -31,7 +30,7 @@ public class UrlController extends Controller {
     // name domain
     private String domain; 
 	// array of characters
-    private char myChars[]; 
+    private String  valid; 
     // random character
     private Random myRand;
 	// number characters 
@@ -43,16 +42,7 @@ public class UrlController extends Controller {
 	valueMap = new HashMap<String, String>();
 	myRand = new Random();
 	keyLength = 8;
-	myChars = new char[62];
-	for (int i = 0; i < 62; i++) {
-		if (i < 10) {
-			myChars[i] = (char)(i + 48);
-		} else if (i > 9 && i <= 35) {
-			myChars[i] = (char)(i + 55);	
-		} else {	
-			myChars[i] = (char)(i + 61);
-		}
-	}
+	valid = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
 	domain = "http://fkt.in";
     }
 
@@ -119,7 +109,7 @@ public class UrlController extends Controller {
 	while (flag) {
 		key = "";
 		for (int i = 0; i <= keyLength; i++) {
-			key += myChars[myRand.nextInt(62)];
+			key += valid.charAt(myRand.nextInt(62));
 		}
 		if (!keyMap.containsKey(key)) {
 			flag = false;
