@@ -1,7 +1,41 @@
-import React, { Component } from 'react'
-import Client from "../Client";
+import React, { Component } from 'react';
 import MediaQuery from 'react-responsive';
 
+
+function shorten(long_url) {
+  long_url = long_url.replaceAll("/", "");
+  if(long_url.slice(0,10) !== "https:papa" && (long_url.slice(0,4) == "http" || long_url.slice(0,5) == "https"))
+  {
+    return fetch('/'+ long_url, {
+
+    accept: "application/json"
+    })
+      .then(checkStatus)
+      .then(parseJSON);
+  }else
+  {
+      return fetch('/url/error', {
+        accept: "application/json"
+      })
+      .then(checkStatus)
+      .then(parseJSON);
+  }
+}
+
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response;
+  }
+  const error = new Error(`HTTP Error ${response.statusText}`);
+  error.status = response.statusText;
+  error.response = response;
+  console.log(error); 
+  throw error;
+}
+
+function parseJSON(response) {
+  return response.json();
+}
 class Shorten extends Component{
   constructor(props){
     super(props)
@@ -10,6 +44,7 @@ class Shorten extends Component{
     }
     this.changeUrlNameHandler = this.changeUrlNameHandler.bind(this);
   }
+ 
 
   changeUrlNameHandler = (event) => {
     this.setState({long_url: event.target.value});
@@ -18,7 +53,7 @@ class Shorten extends Component{
     e.preventDefault();
     let long_url = this.state.long_url;
     console.log('long_url =>'+JSON.stringify(long_url));
-    Client.shorten(long_url).then(res => {
+    shorten(long_url).then(res => {
       console.log(res);
       this.setState(
         {long_url: res }

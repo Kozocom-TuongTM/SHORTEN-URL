@@ -1,0 +1,7 @@
+{
+	"shorten": {
+		"link_shorten": "Shorten your link",
+		"shorten":"Shorten",
+		"link_shorten_error":"Unable to shorten that link. It is not a valid url."
+	}
+}
