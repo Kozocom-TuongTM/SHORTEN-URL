@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import Client from "../Client";
-import MediaQuery from 'react-responsive'
- 
-class Shorten extends Component{
+import MediaQuery from 'react-responsive';
 
+class Shorten extends Component{
   constructor(props){
     super(props)
     this.state = {
@@ -28,6 +27,9 @@ class Shorten extends Component{
 
 }
   render(){
+    
+    const { t } = this.props;
+    console.log(this.props);
 
     const container_isDeskop = {
       width: '100%',
@@ -60,28 +62,26 @@ class Shorten extends Component{
       marginLeft: '8.9%'
     }
 
-    
+
   return(
+    
     <div> 
       <MediaQuery minDeviceWidth={1156}> 
       <form style = {container_isDeskop}>
             <label>Name: </label> 
-            <input style={container_input} type = "text" name ="long_url" className="form-control" value= {this.state.long_url} onChange={this.changeUrlNameHandler} placeholder="Shorten your link"/>   
-            <input  style={container_button_isDeskop} type = "submit" onClick={this.saveUrl} value = "Shorten" className="btn btn-primary"/>    
+            <input style={container_input} type = "text" name ="long_url" className="form-control" value= {this.state.long_url} onChange={this.changeUrlNameHandler} placeholder={t('shorten.link_shorten')}/>   
+            <input  style={container_button_isDeskop} type = "submit" onClick={this.saveUrl} value ={t('shorten.shorten')} className="btn btn-primary"/>    
       </form> 
       </MediaQuery>
 
       <MediaQuery maxDeviceWidth={1155}> 
       <form style = {container_isMobile}>
             <label>Name: </label> 
-            <input style={container_input} type = "text" name ="long_url" className="form-control" value= {this.state.long_url} onChange={this.changeUrlNameHandler} placeholder="Shorten your link"/>   
-            <input  style={container_button_isMobile} type = "submit" onClick={this.saveUrl} value = "Shorten" className="btn btn-primary"/>    
+            <input style={container_input} type = "text" name ="long_url" className="form-control" value= {this.state.long_url} onChange={this.changeUrlNameHandler} placeholder={t('shorten.link_shorten')}/>   
+            <input  style={container_button_isMobile} type = "submit" onClick={this.saveUrl} value ={t('shorten.shorten')} className="btn btn-primary"/>    
       </form> 
       </MediaQuery>
     </div>
-
-    
-   
   );
 }
 }
