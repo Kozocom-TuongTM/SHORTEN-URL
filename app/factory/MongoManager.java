@@ -24,11 +24,11 @@ public class MongoManager {
     private final MongoClient mongo;
     private final Morphia morphia;
 
-    // helpfull to restrict upsertable classes search
+    // helpful to restrict upsertable classes search
     private final static String PACKAGE_ROOT_NAME = "app";
 
     /**
-     * Constructeur privé
+     * Private builder
      */
     private MongoManager() {
         Config conf = ConfigFactory.load();
@@ -54,13 +54,13 @@ public class MongoManager {
      */
     private static class MongoManagerHolder {
         /**
-         * Instance unique non préinitialisée
+         * Single instance not pre-initialized
          */
         private static final MongoManager INSTANCE = new MongoManager();
     }
 
     /**
-     * Point d'accès pour l'instance unique du singleton
+     * Access point for the single instance of the singleton
      */
     public static MongoManager getInstance() {
         return MongoManagerHolder.INSTANCE;
@@ -131,8 +131,6 @@ public class MongoManager {
                 logger.warn(e.getMessage());
                 continue;
             }
-
-            //this.entity = Class.forName(classInfo.getName());
             if (entity.getAnnotations() != null &&
                     entity.getAnnotation(org.mongodb.morphia.annotations.Entity.class) != null) {
                 logger.debug("morphia map : " + classInfo.getName());

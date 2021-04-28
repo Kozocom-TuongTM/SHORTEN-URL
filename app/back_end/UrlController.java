@@ -3,7 +3,6 @@ package back_end;
 import models.Url;
 import models.dao.DaoUrl;
 import models.mongo.GenericDao;
-import models.request.Link;
 
 import play.libs.Json;
 import play.mvc.Controller;

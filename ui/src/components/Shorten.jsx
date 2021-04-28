@@ -36,6 +36,7 @@ function checkStatus(response) {
 function parseJSON(response) {
   return response.json();
 }
+
 class Shorten extends Component{
   constructor(props){
     super(props)
@@ -56,7 +57,7 @@ class Shorten extends Component{
     shorten(long_url).then(res => {
       console.log(res);
       this.setState(
-        {long_url: res }
+        {long_url: res}
       );
     });
 
@@ -118,6 +119,5 @@ class Shorten extends Component{
       </MediaQuery>
     </div>
   );
-}
-}
+}}
 export default Shorten;

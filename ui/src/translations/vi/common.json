@@ -1,7 +1,6 @@
 {
 	"shorten": {
 		"link_shorten": "Rút gọn liên kết của bạn",
-		"shorten":"Rút gọn",
-		"link_shorten_error":"Không thể rút ngắn liên kết đó. Nó không phải là một url hợp lệ."
+		"shorten":"Rút gọn"
 	}
 }

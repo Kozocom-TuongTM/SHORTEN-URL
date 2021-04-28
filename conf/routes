@@ -8,8 +8,6 @@ GET         /:url                            back_end.UrlController.shorten(requ
 GET         /url/error                       back_end.UrlController.error(request: Request)
 GET         /link                            controller.FrontendController.index()
 GET         /api/summary                     controller.HomeController.appSummary()
-# Router
-# GET	    /:id					         back_end.UrlController.expend(id : Long)
 
 
 # An example route (Prefix all API routes with apiPrefix defined in application.conf)

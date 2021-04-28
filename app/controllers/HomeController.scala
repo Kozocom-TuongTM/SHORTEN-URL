@@ -12,13 +12,11 @@ class HomeController @Inject()(cc: ControllerComponents) extends AbstractControl
   def appHello(name : String) = Action {
     implicit request =>
     val name: Option[String] = request.getQueryString("name")
-    print(name);
     val result: String = name.get + " hello"
     Ok(Json.obj("url" -> result))
   }
   
   def appSummary = Action {
-    Ok(Json.obj("content" -> "Shorten-url project 1234567"))
+    Ok(Json.obj("content" -> "Link short url"))
   }
-  
 }

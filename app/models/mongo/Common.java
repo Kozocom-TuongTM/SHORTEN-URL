@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Common {
-    // auto-generated, if not set (see ObjectId)
+    
     @Id
     protected ObjectId id = null;
     protected LocalDateTime created;

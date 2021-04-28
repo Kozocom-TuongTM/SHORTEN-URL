@@ -15,6 +15,7 @@ function HeaderComponent()
     </div>
 }
 const HighOrderComponentTranslated = withTranslation('common')(Shorten)
+
 function App(){
   return(
     <Switch>
