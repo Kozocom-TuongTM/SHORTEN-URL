@@ -4,7 +4,8 @@ import MediaQuery from 'react-responsive';
 
 function shorten(long_url) {
   long_url = long_url.replaceAll("/", "");
-  if(long_url.slice(0,10) !== "https:papa" && (long_url.slice(0,4) == "http" || long_url.slice(0,5) == "https"))
+  if(long_url.slice(0,10) !== "https:papa" && 
+  (long_url.slice(0,4) == "http" || long_url.slice(0,5) == "https"))
   {
     return fetch('/'+ long_url, {
 
@@ -105,16 +106,22 @@ class Shorten extends Component{
       <MediaQuery minDeviceWidth={1156}> 
       <form style = {container_isDeskop}>
             <label>Name: </label> 
-            <input style={container_input} type = "text" name ="long_url" className="form-control" value= {this.state.long_url} onChange={this.changeUrlNameHandler} placeholder={t('shorten.link_shorten')}/>   
-            <input  style={container_button_isDeskop} type = "submit" onClick={this.saveUrl} value ={t('shorten.shorten')} className="btn btn-primary"/>    
+            <input style={container_input} type = "text" name ="long_url" className="form-control"
+             value= {this.state.long_url} onChange={this.changeUrlNameHandler} 
+             placeholder={t('shorten.link_shorten')}/>   
+            <input  style={container_button_isDeskop} type = "submit" onClick={this.saveUrl}
+             value ={t('shorten.shorten')} className="btn btn-primary"/>    
       </form> 
       </MediaQuery>
 
       <MediaQuery maxDeviceWidth={1155}> 
       <form style = {container_isMobile}>
             <label>Name: </label> 
-            <input style={container_input} type = "text" name ="long_url" className="form-control" value= {this.state.long_url} onChange={this.changeUrlNameHandler} placeholder={t('shorten.link_shorten')}/>   
-            <input  style={container_button_isMobile} type = "submit" onClick={this.saveUrl} value ={t('shorten.shorten')} className="btn btn-primary"/>    
+            <input style={container_input} type = "text" name ="long_url" className="form-control" 
+            value= {this.state.long_url} onChange={this.changeUrlNameHandler} 
+            placeholder={t('shorten.link_shorten')}/>   
+            <input  style={container_button_isMobile} type = "submit" onClick={this.saveUrl} 
+            value ={t('shorten.shorten')} className="btn btn-primary"/>    
       </form> 
       </MediaQuery>
     </div>
