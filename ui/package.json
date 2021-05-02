@@ -10,10 +10,17 @@
   },
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "i18next": "^20.2.2",
+    "i18next-browser-languagedetector": "^6.1.0",
+    "i18next-http-backend": "^1.2.1",
+    "i18next-xhr-backend": "^3.2.2",
     "kleur": "^3.0.3",
     "mime-types": "^2.1.30",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
+    "react-i18next": "^11.8.13",
+    "react-responsive": "^8.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "2.1.8"
   },

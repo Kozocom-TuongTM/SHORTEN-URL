@@ -4,16 +4,6 @@
 
 # Serve index page from public directory
 
-GET         /:url                            back_end.UrlController.shorten(request: Request, url: String)
-GET         /url/error                       back_end.UrlController.error(request: Request)
-GET         /link                            controller.FrontendController.index()
-GET         /api/summary                     controller.HomeController.appSummary()
-# Router
-# GET	    /:id					         back_end.UrlController.expend(id : Long)
+GET         /:url                            controllers.UrlController.shorten(request: Request, url: String)
+GET         /url/error                       controllers.UrlController.error(request: Request)
 
-
-# An example route (Prefix all API routes with apiPrefix defined in application.conf)
-GET          /api/hello                      controller.HomeController.appHello(name : String)
-
-# Serve static assets under public directory
-GET          /*file                           controller.FrontendController.assetOrDefault(file)
