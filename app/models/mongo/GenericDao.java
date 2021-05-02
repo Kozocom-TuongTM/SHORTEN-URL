@@ -10,11 +10,6 @@ import org.mongodb.morphia.query.FindOptions;
 import org.mongodb.morphia.query.Query;
 import play.Logger;
 
-import javax.annotation.Nullable;
-import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
-
 public abstract class GenericDao<T extends Common> extends BasicDAO<T, ObjectId> {
     private static Logger.ALogger logger = Logger.of(GenericDao.class);
 

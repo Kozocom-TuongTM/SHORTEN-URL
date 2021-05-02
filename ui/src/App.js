@@ -1,7 +1,7 @@
 import './App.css';
-import React, {Component, Suspense} from 'react';
+import React, { Suspense} from 'react';
 import {Route,Switch} from 'react-router-dom';
-import Shorten from './components/Shorten.jsx';
+import Shortenlink from './components/Shortenlink.jsx';
 import {useTranslation, withTranslation} from "react-i18next";
 
 function HeaderComponent()
@@ -14,7 +14,7 @@ function HeaderComponent()
       </div>
     </div>
 }
-const HighOrderComponentTranslated = withTranslation('common')(Shorten)
+const HighOrderComponentTranslated = withTranslation('common')(Shortenlink)
 
 function App(){
   return(
@@ -25,7 +25,7 @@ function App(){
                 <HighOrderComponentTranslated/>  
             </div>    
         </Suspense>
-        <Route path="/" component={Shorten} exact />
+        <Route path="/" component={Shortenlink} exact />
     </Switch>
   );
 }

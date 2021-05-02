@@ -8,18 +8,11 @@ import org.mongodb.morphia.aggregation.AggregationPipeline;
 import org.mongodb.morphia.query.Criteria;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
-
-import javax.inject.Singleton;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
- 
 import static org.mongodb.morphia.aggregation.Group.*;
 import static org.mongodb.morphia.aggregation.Projection.projection;
 
+import javax.inject.Singleton;
+ 
 @Singleton
 public class DaoUrl extends GenericDao<Url>{
 
